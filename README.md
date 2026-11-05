@@ -11,8 +11,24 @@ USB mic ─► capture ─► noise gate ─► resample ─► [ backend ] ─�
 
 ## Status
 * Working, tested: audio engine, gate, resampling, limiter, streaming phase-vocoder pitch/voice changer, chunked streaming wrapper for neural models, CLI, offline `convert`, CI on 3 OSes + Pi-class ARM.
-* **Neural voice cloning is a plug-in**: the `onnx` backend runs your own exported model (contract in [docs/MODELS.md](docs/MODELS.md)). No model is bundled. The default `pitch` backend is a plain DSP voice changer, not a clone.
+* **Neural voice cloning is a plug-in**: the `remote` backend (below) and the `onnx` backend runs your own exported model (contract in [docs/MODELS.md](docs/MODELS.md)). No model is bundled. The default `pitch` backend is a plain DSP voice changer, not a clone.
 * Not yet validated on real Pi hardware / a real phone call; levels and latency need tuning on your setup.
+
+## Neural cloning (kNN-VC, via a helper machine)
+WavLM-Large (316M params) is far too heavy for live inference on a Pi, so the Pi keeps handling mic/jack and streams audio windows over TCP to a laptop/desktop (GPU optional) running the model:
+```bash
+# on the helper machine (any OS):  pip install -e ".[server]"
+rtvc enroll --out alice.pt alice_*.wav                  # 16-bit PCM wavs of the target voice, ideally 5+ min
+rtvc serve --runner knnvc --voice alice.pt --host 0.0.0.0 --port 9000
+# on the Pi, set backend.name = "remote" and [backend.remote].host in your config
+rtvc run -c configs/default.toml --backend remote --accept-responsible-use
+```
+* kNN-VC (Baas et al., 2023) swaps each source frame's WavLM features for the mean of its nearest frames in the target's bank, then vocodes with HiFi-GAN. No training; it only works with speech **you have consent to use**.
+* `serve` loads the model via `torch.hub` from `bshall/knn-vc` (third-party code + weights from GitHub; review it first). Use `--hub /path/to/clone` for an offline copy.
+* Fail-closed: if the server is slow or unreachable, the call hears **silence**, never your real voice.
+* The link is **unauthenticated and unencrypted**: use a trusted LAN or an SSH/WireGuard tunnel, and keep `--host 127.0.0.1` unless needed.
+* Latency ≈ chunk (200 ms) + crossfade + network + inference. Inference must stay under `chunk_ms`; the Pi log shows it.
+* **Status:** the transport, fail-closed behaviour and streaming wrapper are tested. The kNN-VC runner itself is **unverified end to end** (not run yet), and conversion quality/latency are unmeasured.
 
 ## Responsible use
 Only convert voices you have permission to use, and don't use this to deceive or defraud people on calls (impersonation can be illegal, and many jurisdictions and call-recording rules require disclosure). `rtvc run` refuses to start until you pass `--accept-responsible-use` or set `consent_acknowledged = true`.

@@ -39,10 +39,22 @@ class OnnxCfg:
 
 
 @dataclass
+class RemoteCfg:
+    host: str = "127.0.0.1"
+    port: int = 9000
+    sample_rate: int = 16000
+    chunk_ms: int = 200
+    context_ms: int = 400
+    crossfade_ms: int = 20
+    timeout_ms: int = 800
+
+
+@dataclass
 class BackendCfg:
     name: str = "pitch"
     pitch: PitchCfg = field(default_factory=PitchCfg)
     onnx: OnnxCfg = field(default_factory=OnnxCfg)
+    remote: RemoteCfg = field(default_factory=RemoteCfg)
 
 
 @dataclass

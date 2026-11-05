@@ -68,3 +68,17 @@ def test_ring_buffer_wraps_and_underruns():
     r.write(np.arange(6, 11, dtype=np.float32))
     assert list(r.read(7)) == [4, 5, 6, 7, 8, 9, 10]
     assert r.read(2).tolist() == [0, 0] and r.underruns == 1
+
+
+def test_remote_roundtrip_and_fail_closed():
+    import threading
+    from rtvc.remote import RemoteRunner, serve
+    ready, stop = threading.Event(), threading.Event()
+    th = threading.Thread(target=serve, args=(lambda a: a * 0.5, "127.0.0.1", 59123, ready, stop), daemon=True)
+    th.start(); assert ready.wait(2)
+    r = RemoteRunner("127.0.0.1", 59123, timeout_ms=1000)
+    x = sine(300, 16000, 0.5)
+    assert np.allclose(r(x), x * 0.5)
+    stop.set(); th.join(2); r.close()
+    dead = RemoteRunner("127.0.0.1", 59123, timeout_ms=200)
+    assert not np.any(dead(x))  # server gone -> silence, not the raw input

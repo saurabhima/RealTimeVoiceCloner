@@ -53,6 +53,25 @@ def cmd_convert(args):
     print(f"wrote {args.output} (backend={cfg.backend.name})")
 
 
+def cmd_serve(args):
+    from .remote import serve
+    from . import server_runners as sr
+    if args.runner == "knnvc":
+        if not args.voice:
+            raise SystemExit("--voice is required (create it with: rtvc enroll)")
+        runner = sr.knnvc_runner(args.voice, args.topk, args.hub, args.device)
+    else:
+        runner = sr.identity_runner()
+    print(f"serving '{args.runner}' on {args.host}:{args.port} (no auth: trusted network only)")
+    serve(runner, args.host, args.port)
+
+
+def cmd_enroll(args):
+    from .server_runners import build_voice
+    n = build_voice(args.wavs, args.out, args.hub, args.device)
+    print(f"saved {n} feature frames (~{n * 0.02 / 60:.1f} min of speech) to {args.out}")
+
+
 def cmd_tone(args):
     """Play a 440 Hz tone to the output device to calibrate levels with the phone."""
     import sounddevice as sd
@@ -71,7 +90,7 @@ def main(argv=None):
 
     def common(sp):
         sp.add_argument("-c", "--config")
-        sp.add_argument("--backend", choices=["passthrough", "pitch", "onnx"])
+        sp.add_argument("--backend", choices=["passthrough", "pitch", "onnx", "remote"])
         sp.add_argument("--semitones", type=float)
         sp.add_argument("--output-gain-db", type=float, dest="output_gain_db")
 
@@ -85,6 +104,17 @@ def main(argv=None):
     t = sub.add_parser("tone", help="output a test tone"); common(t)
     t.add_argument("--output-device", dest="output_device"); t.add_argument("--seconds", type=int, default=5)
     t.set_defaults(fn=cmd_tone)
+    sv = sub.add_parser("serve", help="host a neural model for the Pi (run on a laptop/desktop)")
+    sv.add_argument("--runner", choices=["identity", "knnvc"], default="knnvc")
+    sv.add_argument("--voice", help="feature bank made by `rtvc enroll`")
+    sv.add_argument("--host", default="127.0.0.1"); sv.add_argument("--port", type=int, default=9000)
+    sv.add_argument("--topk", type=int, default=4)
+    sv.add_argument("--hub", default="bshall/knn-vc"); sv.add_argument("--device", default="auto")
+    sv.set_defaults(fn=cmd_serve)
+    en = sub.add_parser("enroll", help="build a target-voice feature bank from wav files (needs [server] extra)")
+    en.add_argument("--out", required=True); en.add_argument("--hub", default="bshall/knn-vc")
+    en.add_argument("--device", default="auto"); en.add_argument("wavs", nargs="+")
+    en.set_defaults(fn=cmd_enroll)
     args = p.parse_args(argv)
     args.fn(args)
 

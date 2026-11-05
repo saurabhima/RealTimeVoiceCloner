@@ -28,3 +28,12 @@ chunk_ms = 200
 context_ms = 400
 crossfade_ms = 20
 speaker_embedding = ""         # optional .npy file
+
+[backend.remote]               # backend.name = "remote": model runs on another machine (`rtvc serve`)
+host = "192.168.1.50"
+port = 9000
+sample_rate = 16000
+chunk_ms = 200
+context_ms = 400
+crossfade_ms = 20
+timeout_ms = 800               # on timeout/disconnect the output goes SILENT (never your real voice)

@@ -13,6 +13,13 @@ def create_backend(cfg: BackendCfg) -> Backend:
     if cfg.name == "onnx":
         from .onnx_vc import make_onnx_backend
         return make_onnx_backend(cfg.onnx)
+    if cfg.name == "remote":
+        from ..remote import RemoteRunner
+        from .chunked import ChunkedBackend
+        r = cfg.remote
+        ms = lambda v: int(r.sample_rate * v / 1000)  # noqa: E731
+        return ChunkedBackend(RemoteRunner(r.host, r.port, r.timeout_ms), r.sample_rate,
+                              ms(r.chunk_ms), ms(r.context_ms), ms(r.crossfade_ms))
     raise ValueError(f"unknown backend: {cfg.name}")
 
 
