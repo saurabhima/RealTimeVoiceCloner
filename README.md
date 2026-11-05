@@ -48,7 +48,7 @@ Only convert voices you have permission to use, and don't use this to deceive or
 
 *System overview and wiring detail (values: 2 × 10 kΩ, 47 Ω, 2.2 kΩ, 4.7 µF; see `hardware/`). Not yet built or tested on real hardware, so verify with a multimeter and a low volume first.*
 
-Prefer a single USB-C module (USB-C in, 3.5 mm jack out)? See **[USB-C Voice Module](hardware/usbc/README.md)** (design only, untested; CM108B pinout verified against the datasheet, a few support-circuit values still open).
+Prefer a single USB-C module (USB-C in, 3.5 mm jack out)? See **[USB-C Voice Module](hardware/usbc/README.md)** (design only, untested; pinout and support circuit taken from the C-Media datasheet and application notes; one capacitor value still to verify).
 
 Prefer one board? See the **[Voice HAT design](hardware/hat/README.md)** (CM108/CM119 module + attenuator + TRRS on a Pi-sized PCB; design only, untested).
 
