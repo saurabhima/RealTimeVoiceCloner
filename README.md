@@ -46,7 +46,7 @@ Only convert voices you have permission to use, and don't use this to deceive or
 
 ![Wiring schematic](docs/schematic.png)
 
-*System overview and wiring detail (values: 2 × 10 kΩ, 47 Ω, 2.2 kΩ, 1–10 µF). Not yet built or tested on real hardware, so verify with a multimeter and a low volume first.*
+*System overview and wiring detail (values: 2 × 10 kΩ, 47 Ω, 2.2 kΩ, 4.7 µF; see `hardware/`). Not yet built or tested on real hardware, so verify with a multimeter and a low volume first.*
 
 ## Using a USB audio adapter (recommended; required on Pi 5)
 1. Plug in the USB mic and the USB audio adapter, then run `rtvc devices`. Both appear as USB devices; note each name.
