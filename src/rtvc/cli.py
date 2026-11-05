@@ -72,6 +72,35 @@ def cmd_enroll(args):
     print(f"saved {n} feature frames (~{n * 0.02 / 60:.1f} min of speech) to {args.out}")
 
 
+def cmd_bench(args):
+    """Time a running `rtvc serve` with realistic windows and say if it can keep up."""
+    import time
+    from .remote import RemoteRunner
+    sr = 16000
+    n = sr * (args.chunk_ms + args.context_ms) // 1000
+    t = np.arange(n) / sr
+    win = (0.2 * np.sin(2 * np.pi * 150 * t) * (1 + 0.5 * np.sin(2 * np.pi * 4 * t))).astype(np.float32)
+    r = RemoteRunner(args.host, args.port, timeout_ms=30000)
+    r(win)  # warm-up
+    times = []
+    for _ in range(args.n):
+        t0 = time.perf_counter()
+        r(win)
+        times.append(1000 * (time.perf_counter() - t0))
+    if r.failures:
+        raise SystemExit(f"server unreachable or failing ({r.failures} failures)")
+    times.sort()
+    med, p95 = times[len(times) // 2], times[int(len(times) * 0.95) - 1]
+    print(f"window {args.context_ms}+{args.chunk_ms} ms: median {med:.0f} ms, p95 {p95:.0f} ms (budget {args.chunk_ms} ms)")
+    if p95 <= 0.8 * args.chunk_ms:
+        print("OK: fast enough for live use.")
+    elif p95 <= args.chunk_ms:
+        print("MARGINAL: little headroom; expect occasional glitches.")
+    else:
+        need = int(p95 * 1.25)
+        print(f"TOO SLOW: try chunk_ms >= {need} (more delay), a GPU, or a smaller context_ms.")
+
+
 def cmd_tone(args):
     """Play a 440 Hz tone to the output device to calibrate levels with the phone."""
     import sounddevice as sd
@@ -111,6 +140,11 @@ def main(argv=None):
     sv.add_argument("--topk", type=int, default=4)
     sv.add_argument("--hub", default="bshall/knn-vc"); sv.add_argument("--device", default="auto")
     sv.set_defaults(fn=cmd_serve)
+    bn = sub.add_parser("bench", help="check a running `rtvc serve` is fast enough")
+    bn.add_argument("--host", default="127.0.0.1"); bn.add_argument("--port", type=int, default=9000)
+    bn.add_argument("--chunk-ms", type=int, default=200); bn.add_argument("--context-ms", type=int, default=400)
+    bn.add_argument("-n", type=int, default=20)
+    bn.set_defaults(fn=cmd_bench)
     en = sub.add_parser("enroll", help="build a target-voice feature bank from wav files (needs [server] extra)")
     en.add_argument("--out", required=True); en.add_argument("--hub", default="bshall/knn-vc")
     en.add_argument("--device", default="auto"); en.add_argument("wavs", nargs="+")
