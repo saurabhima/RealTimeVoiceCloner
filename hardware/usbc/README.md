@@ -4,7 +4,7 @@ A small USB audio module: **USB Type-C in**, **CM108B codec**, level attenuator,
 
 ![USB-C module schematic](../../docs/usbc_schematic.png)
 
-**PCB:** a placement-only KiCad board is in [`pcb/`](pcb/README.md) (unrouted, not yet opened in KiCad).
+**Schematic:** an editable KiCad schematic is in [`sch/`](sch/README.md). **PCB:** a placement-only KiCad board is in [`pcb/`](pcb/README.md). Neither has been opened in KiCad yet (unrouted board).
 
 | File | Use |
 |---|---|
