@@ -44,6 +44,15 @@ Only convert voices you have permission to use, and don't use this to deceive or
 * Commercial "audio isolator / mic attenuator" cables are the easier route.
 * Prefer a USB sound card for cleaner audio and fewer ground-loop hum problems; add a ground-loop isolator if you hear whine.
 
+## Using a USB audio adapter (recommended; required on Pi 5)
+1. Plug in the USB mic and the USB audio adapter, then run `rtvc devices`. Both appear as USB devices; note each name.
+2. Put a unique part of each name in `configs/default.toml`, e.g. `input_device = "Blue"` and `output_device = "USB Audio"`. Don't pick the same device for both unless it really is the mic.
+3. Check `alsamixer` (F6 to select the card): unmute and set the adapter's playback volume to a fixed level, then leave it. Level changes after this should come from `output_gain_db`.
+4. Wire the adapter's **headphone/line-out** through the attenuator and capacitor to the phone's TRRS mic contact (see Hardware). Many adapters output headphone-level audio (up to ~1 V), still far too hot for a phone mic: keep the ~40 dB attenuator.
+5. Calibrate with `rtvc tone --output-gain-db -30` during a test call, then `rtvc run`.
+
+Adapter notes: a mono-only adapter works (the engine falls back to mono); an adapter that has a combined 4-pole headset jack can be wired straight to a phone with a TRRS cable only if its output is attenuated and its mic contact is the one the phone expects (CTIA vs OMTP differ: if the far end hears nothing, try an OMTP/CTIA switch adapter).
+
 ## Install
 ### Raspberry Pi OS (64-bit Bookworm)
 ```bash

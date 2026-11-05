@@ -3,7 +3,7 @@ consent_acknowledged = false   # must be true (or pass --accept-responsible-use)
 
 [audio]
 input_device  = "USB"          # name substring or index; "" = system default
-output_device = "Headphones"   # Pi 3.5mm jack; use your USB dongle's name otherwise
+output_device = ""             # name part of your USB audio adapter (see `rtvc devices`)
 device_rate   = 48000
 block_ms      = 20
 output_channels = 2            # same signal on L and R

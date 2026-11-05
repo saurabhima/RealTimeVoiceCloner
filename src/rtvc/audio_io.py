@@ -52,7 +52,14 @@ def _sd():
 
 def list_devices() -> str:
     sd = _sd()
-    return str(sd.query_devices())
+    rows = []
+    for i, d in enumerate(sd.query_devices()):
+        io = ("IN " if d["max_input_channels"] else "") + ("OUT" if d["max_output_channels"] else "")
+        rows.append(f"{i:3d}  {io:6s} {d['name']}  (default {int(d['default_samplerate'])} Hz)")
+    return "\n".join(rows) + (
+        "\n\nSet in your config, using a unique part of the name:"
+        '\n  input_device  = "<your USB mic name>"'
+        '\n  output_device = "<your USB audio adapter name>"')
 
 
 def find_device(spec: str, kind: str):
@@ -88,7 +95,7 @@ class Engine:
             self.in_overflows += 1
 
     def _out_cb(self, outdata, frames, t, status):
-        outdata[:] = self._ring.read(frames)[:, None]
+        outdata[:] = self._ring.read(frames)[:, None]  # same signal on every channel
 
     def _worker(self):
         while not self._stop.is_set():
@@ -107,9 +114,18 @@ class Engine:
         print(f"pipeline latency ~{self.pipe.latency_ms:.0f} ms, block {budget:.0f} ms")
         th = threading.Thread(target=self._worker, daemon=True)
         th.start()
+        out_ch = c.output_channels
+        try:  # some cheap USB adapters are mono-only
+            sd.check_output_settings(out_dev, channels=out_ch, samplerate=c.device_rate)
+        except sd.PortAudioError:
+            if out_ch == 1:
+                raise
+            print("output device rejected stereo; falling back to mono")
+            out_ch = 1
+        self._out_ch = out_ch
         with sd.InputStream(device=in_dev, channels=1, samplerate=c.device_rate,
                             blocksize=self.block, dtype="float32", callback=self._in_cb), \
-             sd.OutputStream(device=out_dev, channels=c.output_channels, samplerate=c.device_rate,
+             sd.OutputStream(device=out_dev, channels=out_ch, samplerate=c.device_rate,
                              blocksize=self.block, dtype="float32", callback=self._out_cb):
             print("running; Ctrl+C to stop")
             try:
