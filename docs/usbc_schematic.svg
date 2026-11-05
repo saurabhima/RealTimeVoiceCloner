@@ -60,23 +60,28 @@
 <polyline points="230,355 250,355 250,440" fill="none" stroke="#1f2937" stroke-width="2"/>
 <rect x="420" y="100" width="250" height="270" rx="8" fill="#fef9c3" stroke="#1f2937" stroke-width="2"/>
 <text x="545" y="122" font-size="13" text-anchor="middle" fill="#111827" font-weight="700">U1  CM108B (LQFP-48)</text>
-<text x="545" y="140" font-size="10" text-anchor="middle" fill="#b45309">pin names are placeholders:</text>
-<text x="545" y="153" font-size="10" text-anchor="middle" fill="#b45309">map to the datasheet pin numbers</text>
+<text x="545" y="140" font-size="10" text-anchor="middle" fill="#166534">pinout per C-Media datasheet rev 1.11</text>
 <circle cx="420" cy="245" r="4.5" fill="#1f2937"/>
-<text x="430" y="249" font-size="11" text-anchor="start" fill="#111827">DVDD / AVDD</text>
+<text x="430" y="249" font-size="11" text-anchor="start" fill="#111827">DVDD 35, AVDD 29/34</text>
 <circle cx="420" cy="295" r="4.5" fill="#1f2937"/>
-<text x="430" y="299" font-size="11" text-anchor="start" fill="#111827">DP</text>
+<text x="430" y="299" font-size="11" text-anchor="start" fill="#111827">USBDP 41</text>
 <circle cx="420" cy="325" r="4.5" fill="#1f2937"/>
-<text x="430" y="329" font-size="11" text-anchor="start" fill="#111827">DM</text>
+<text x="430" y="329" font-size="11" text-anchor="start" fill="#111827">USBDM 42</text>
 <circle cx="420" cy="355" r="4.5" fill="#1f2937"/>
-<text x="430" y="359" font-size="11" text-anchor="start" fill="#111827">DGND / AGND</text>
+<text x="430" y="359" font-size="11" text-anchor="start" fill="#111827">DVSS 14/36, AVSS 24/33</text>
 <circle cx="670" cy="250" r="4.5" fill="#1f2937"/>
-<text x="660" y="254" font-size="11" text-anchor="end" fill="#111827">HPOUTL</text>
+<text x="660" y="254" font-size="11" text-anchor="end" fill="#111827">LOL 30</text>
 <circle cx="670" cy="300" r="4.5" fill="#1f2937"/>
-<text x="660" y="304" font-size="11" text-anchor="end" fill="#111827">HPOUTR</text>
-<text x="545" y="190" font-size="11" text-anchor="middle" fill="#111827" font-weight="700">TODO from datasheet:</text>
-<text x="545" y="206" font-size="10" text-anchor="middle" fill="#111827">regulator caps, mode / EEPROM</text>
-<text x="545" y="220" font-size="10" text-anchor="middle" fill="#111827">pins, MIC input handling</text>
+<text x="660" y="304" font-size="11" text-anchor="end" fill="#111827">LOR 32</text>
+<text x="545" y="162" font-size="10" text-anchor="middle" fill="#111827" font-weight="700">Straps to GND:</text>
+<text x="545" y="176" font-size="10" text-anchor="middle" fill="#111827">MODE 10, PWRSEL 7, MSEL 38,</text>
+<text x="545" y="190" font-size="10" text-anchor="middle" fill="#111827">ADSEL 22, TEST 23</text>
+<text x="545" y="204" font-size="10" text-anchor="middle" fill="#111827">(headset mode, 500 mA, mixer off)</text>
+<text x="545" y="226" font-size="1" text-anchor="start" fill="#111827"></text>
+<text x="545" y="226" font-size="1" text-anchor="start" fill="#111827"></text>
+<text x="545" y="226" font-size="1" text-anchor="start" fill="#111827"></text>
+<text x="545" y="222" font-size="10" text-anchor="middle" fill="#111827" font-weight="700">4.7µF to GND (C11–C14, value assumed):</text>
+<text x="545" y="236" font-size="10" text-anchor="middle" fill="#111827">DREG18 8, DREG33 9, AREG36 37, VREF 26</text>
 <polyline points="420,355 400,355 400,440" fill="none" stroke="#1f2937" stroke-width="2"/>
 <polyline points="670,250 700,250" fill="none" stroke="#1f2937" stroke-width="2"/>
 <line x1="700" y1="230" x2="700" y2="270" stroke="#1f2937" stroke-width="3"/><line x1="714" y1="230" x2="714" y2="270" stroke="#1f2937" stroke-width="3"/>
@@ -128,11 +133,11 @@
 <rect x="20" y="495" width="1160" height="285" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="2"/>
 <text x="38" y="520" font-size="15" text-anchor="start" fill="#111827" font-weight="700">Design notes</text>
 <text x="38" y="548" font-size="12" text-anchor="start" fill="#111827">•  Connect to the Pi with a USB-C to USB-A cable into a Pi USB-A port. The Pi's own USB-C port is power-input only and cannot host this module.</text>
-<text x="38" y="575" font-size="12" text-anchor="start" fill="#111827">•  CC1/CC2 each get 5.1 kΩ to GND so the host sees a USB device; with a C-to-A cable, VBUS is 5 V and the module draws well under 500 mA. No USB-PD, no alternate modes.</text>
-<text x="38" y="602" font-size="12" text-anchor="start" fill="#111827">•  D+ and D− are tied across both connector rows (A6/B6, A7/B7), so the plug works in either orientation. Keep the pair short and parallel (about 90 Ω differential).</text>
-<text x="38" y="629" font-size="12" text-anchor="start" fill="#111827">•  U1 is NOT a finished design: pin numbers, regulator/decoupling caps, mode/EEPROM pins and the need for C6/C7 must come from the CM108B datasheet (not available to me).</text>
-<text x="38" y="656" font-size="12" text-anchor="start" fill="#111827">•  C2 = 10 µF and C3 = 100 nF at VBUS. U2 (USBLC6): VBUS pin to raw VBUS (left of FB1), GND pin to GND, I/O pins on D+/D−.</text>
-<text x="38" y="683" font-size="12" text-anchor="start" fill="#111827">•  Attenuation about −41 dB flat from 300 Hz (calculated). Not built or tested: check with a multimeter and start at very low volume.</text>
-<text x="38" y="710" font-size="12" text-anchor="start" fill="#111827">•  Phone side: plug a 4-pole male-male TRRS (CTIA) cable from J2 to the phone. If the far end hears nothing, try an OMTP/CTIA swap adapter.</text>
-<text x="38" y="737" font-size="12" text-anchor="start" fill="#111827">•  Software: rtvc run -c ... with output_device = the module (see rtvc devices). The USB microphone stays on a separate Pi USB port.</text>
+<text x="38" y="577" font-size="12" text-anchor="start" fill="#111827">•  CC1/CC2 each get 5.1 kΩ to GND (USB device). D+/D− are tied across both connector rows so the plug works either way up. No USB-PD.</text>
+<text x="38" y="606" font-size="12" text-anchor="start" fill="#111827">•  U1 pin numbers verified against the C-Media CM108B datasheet rev 1.11 (section 4.1). LOL/LOR are line outs biased at 1.75 V DC, hence C6/C7 (+ toward U1). Full scale 0.995 Vrms into 10 kΩ.</text>
+<text x="38" y="635" font-size="12" text-anchor="start" fill="#111827">•  Straps: MODE = GND (headset mode: playback + record), PWRSEL = GND (500 mA bus-powered), MSEL = GND (mixer off). Volume/mute/EEPROM pins left open (internal pull-ups, default USB descriptors).</text>
+<text x="38" y="664" font-size="12" text-anchor="start" fill="#111827">•  OPEN ITEMS (the datasheet is silent): values of the DREG18/DREG33/AREG36/VREF capacitors (4.7 µF assumed), any external USB D+ pull-up or series resistors (none added), role of LOBS (left open). MICIN, VBIAS and the I2S/GPIO/SPDIF pins are unused.</text>
+<text x="38" y="693" font-size="12" text-anchor="start" fill="#111827">•  Attenuation about −41 dB (calculated): about 9 mV rms at full-scale output. Not built or tested: check with a multimeter, start at very low volume.</text>
+<text x="38" y="722" font-size="12" text-anchor="start" fill="#111827">•  Phone side: 4-pole male-male TRRS (CTIA) cable from J2 to the phone. If the far end hears nothing, try an OMTP/CTIA swap adapter.</text>
+<text x="38" y="751" font-size="12" text-anchor="start" fill="#111827">•  Software: rtvc run with output_device = the module (see rtvc devices). The USB microphone stays on a separate Pi USB port.</text>
 </svg>
