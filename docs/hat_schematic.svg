@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="Helvetica, Arial, sans-serif"><rect width="1200" height="760" fill="#fff"/>
+<text x="600" y="30" font-size="21" text-anchor="middle" fill="#111827" font-weight="700">RTVC Voice HAT v0.1: CM108/CM119 module + attenuator + TRRS</text>
+<rect x="30" y="50" width="1140" height="430" rx="8" fill="#fafafa" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="45" y="72" font-size="12" text-anchor="start" fill="#6b7280">HAT board (65 × 56.5 mm)</text>
+<rect x="60" y="90" width="200" height="80" rx="8" fill="#dcfce7" stroke="#1f2937" stroke-width="2"/>
+<text x="160" y="116" font-size="13" text-anchor="middle" fill="#111827" font-weight="700">J4  Pi GPIO socket</text>
+<text x="160" y="136" font-size="11" text-anchor="middle" fill="#111827">mechanical + GND pins only</text>
+<text x="160" y="152" font-size="11" text-anchor="middle" fill="#111827">(no USB on GPIO)</text>
+<rect x="60" y="230" width="170" height="110" rx="8" fill="#e0f2fe" stroke="#1f2937" stroke-width="2"/>
+<text x="145" y="252" font-size="13" text-anchor="middle" fill="#111827" font-weight="700">J1  USB from Pi</text>
+<circle cx="230" cy="272" r="4.5" fill="#1f2937"/>
+<text x="220" y="276" font-size="11" text-anchor="end" fill="#111827">1 VBUS</text>
+<circle cx="230" cy="290" r="4.5" fill="#1f2937"/>
+<text x="220" y="294" font-size="11" text-anchor="end" fill="#111827">2 D−</text>
+<circle cx="230" cy="308" r="4.5" fill="#1f2937"/>
+<text x="220" y="312" font-size="11" text-anchor="end" fill="#111827">3 D+</text>
+<circle cx="230" cy="326" r="4.5" fill="#1f2937"/>
+<text x="220" y="330" font-size="11" text-anchor="end" fill="#111827">4 GND</text>
+<text x="145" y="380" font-size="11" text-anchor="middle" fill="#374151">4-pin cable to a Pi USB-A port</text>
+<text x="145" y="396" font-size="11" text-anchor="middle" fill="#374151">(keep &lt; 15 cm)</text>
+<polyline points="230,272 290,272" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="290" y="264" width="44" height="16" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="312" y="258" font-size="12" text-anchor="middle" fill="#111827">FB1</text>
+<polyline points="334,272 420,272" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="380" cy="272" r="4.5" fill="#1f2937"/>
+<polyline points="380,272 380,248" fill="none" stroke="#1f2937" stroke-width="2"/>
+<line x1="368" y1="248" x2="392" y2="248" stroke="#1f2937" stroke-width="3"/><line x1="368" y1="240" x2="392" y2="240" stroke="#1f2937" stroke-width="3"/>
+<polyline points="380,240 380,226" fill="none" stroke="#1f2937" stroke-width="2"/>
+<text x="366" y="236" text-anchor="end" font-size="11" fill="#111827">C2 10µF ∥ C3 100nF</text><line x1="368" y1="226" x2="392" y2="226" stroke="#1f2937" stroke-width="2"/><line x1="372" y1="231" x2="388" y2="231" stroke="#1f2937" stroke-width="2"/><line x1="376" y1="236" x2="384" y2="236" stroke="#1f2937" stroke-width="2"/>
+<polyline points="230,290 420,290" fill="none" stroke="#2563eb" stroke-width="2"/>
+<polyline points="230,308 230,308" fill="none" stroke="#2563eb" stroke-width="2"/>
+<rect x="420" y="230" width="200" height="170" rx="8" fill="#fef9c3" stroke="#1f2937" stroke-width="2"/>
+<text x="520" y="252" font-size="13" text-anchor="middle" fill="#111827" font-weight="700">U1  CM108 / CM119</text>
+<text x="520" y="388" font-size="11" text-anchor="middle" fill="#111827">USB audio module (socket)</text>
+<circle cx="420" cy="272" r="4.5" fill="#1f2937"/>
+<text x="430" y="276" font-size="11" text-anchor="start" fill="#111827">VBUS</text>
+<circle cx="420" cy="290" r="4.5" fill="#1f2937"/>
+<text x="430" y="294" font-size="11" text-anchor="start" fill="#111827">D−</text>
+<circle cx="420" cy="308" r="4.5" fill="#1f2937"/>
+<text x="430" y="312" font-size="11" text-anchor="start" fill="#111827">D+</text>
+<circle cx="420" cy="326" r="4.5" fill="#1f2937"/>
+<text x="430" y="330" font-size="11" text-anchor="start" fill="#111827">GND</text>
+<circle cx="620" cy="290" r="4.5" fill="#1f2937"/>
+<text x="610" y="294" font-size="11" text-anchor="end" fill="#111827">HPL</text>
+<circle cx="620" cy="326" r="4.5" fill="#1f2937"/>
+<text x="610" y="330" font-size="11" text-anchor="end" fill="#111827">HPR</text>
+<circle cx="620" cy="362" r="4.5" fill="#1f2937"/>
+<text x="610" y="366" font-size="11" text-anchor="end" fill="#111827">AGND</text>
+<polyline points="230,326 420,326" fill="none" stroke="#2563eb" stroke-width="2"/>
+<polyline points="230,308 420,308" fill="none" stroke="#2563eb" stroke-width="2"/>
+<text x="236" y="346" font-size="10" text-anchor="start" fill="#2563eb">USB pair: short, equal length, 90 Ω</text>
+<polyline points="620,290 670,290" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="670" y="282" width="56" height="16" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="698" y="277" font-size="12" text-anchor="middle" fill="#111827">R1 10k</text>
+<polyline points="726,290 790,290 790,325" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="620,326 670,326" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="670" y="318" width="56" height="16" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="698" y="313" font-size="12" text-anchor="middle" fill="#111827">R2 10k</text>
+<polyline points="726,326 790,326 790,325" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="790" cy="325" r="4.5" fill="#1f2937"/>
+<polyline points="790,325 900,325" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="830" cy="325" r="4.5" fill="#1f2937"/>
+<polyline points="830,325 830,370" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="822" y="370" width="16" height="36" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="844" y="392" font-size="12" text-anchor="start" fill="#111827">R3 47Ω</text>
+<polyline points="830,406 830,440" fill="none" stroke="#1f2937" stroke-width="2"/>
+<line x1="900" y1="305" x2="900" y2="345" stroke="#1f2937" stroke-width="3"/><line x1="914" y1="305" x2="914" y2="345" stroke="#1f2937" stroke-width="3"/>
+<text x="907" y="296" font-size="12" text-anchor="middle" fill="#111827">C1 4.7µF</text>
+<text x="907" y="362" font-size="10" text-anchor="middle" fill="#6b7280">(+ to phone)</text>
+<polyline points="914,325 1000,325" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="980" cy="325" r="4.5" fill="#1f2937"/>
+<polyline points="980,325 980,370" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="972" y="370" width="16" height="36" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="966" y="392" text-anchor="end" font-size="12" fill="#111827">R4 2.2k</text>
+<polyline points="980,406 980,440" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="620,362 660,362 660,440 1030,440" fill="none" stroke="#374151" stroke-width="3"/>
+<circle cx="830" cy="440" r="4.5" fill="#1f2937"/>
+<circle cx="980" cy="440" r="4.5" fill="#1f2937"/>
+<text x="700" y="458" font-size="11" text-anchor="start" fill="#374151">GND (single-point join at the attenuator)</text>
+<rect x="1030" y="268" width="130" height="182" rx="8" fill="#ede9fe" stroke="#1f2937" stroke-width="2"/>
+<text x="1095" y="288" font-size="13" text-anchor="middle" fill="#111827" font-weight="700">J2  to phone</text>
+<text x="1095" y="304" font-size="11" text-anchor="middle" fill="#111827">TRRS (CTIA)</text>
+<circle cx="1030" cy="325" r="4.5" fill="#1f2937"/>
+<text x="1040" y="329" font-size="11" text-anchor="start" fill="#111827">1 MIC</text>
+<polyline points="1000,325 1030,325" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="1030" cy="440" r="4.5" fill="#1f2937"/>
+<text x="1040" y="444" font-size="11" text-anchor="start" fill="#111827">2 GND</text>
+<text x="1040" y="386" font-size="11" text-anchor="start" fill="#111827">3 Ring1 R</text>
+<text x="1040" y="404" font-size="11" text-anchor="start" fill="#111827">4 Tip L</text>
+<text x="1095" y="424" font-size="9" text-anchor="middle" fill="#6b7280">(call audio out; optional J5)</text>
+<rect x="30" y="500" width="1140" height="235" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="2"/>
+<text x="48" y="524" font-size="15" text-anchor="start" fill="#111827" font-weight="700">Design notes</text>
+<text x="48" y="550" font-size="12" text-anchor="start" fill="#111827">•  Pi USB port to J1 by cable; module gets 5 V and USB data from J1. GPIO header gives mechanical mounting and common ground only.</text>
+<text x="48" y="574" font-size="12" text-anchor="start" fill="#111827">•  Not an official HAT: no ID EEPROM (the Pi will not auto-load anything, and none is needed). Add a 24C32 + jumper if you want HAT compliance.</text>
+<text x="48" y="598" font-size="12" text-anchor="start" fill="#111827">•  U1 pin order is ASSUMED. Different CM108 modules use different pinouts: confirm VBUS / D− / D+ / GND / HPL / HPR / AGND and edit the netlist or footprint.</text>
+<text x="48" y="622" font-size="12" text-anchor="start" fill="#111827">•  Layout: keep D+/D− short and together, ground pour on the bottom layer, put the attenuator and J2 away from the USB traces and cable.</text>
+<text x="48" y="646" font-size="12" text-anchor="start" fill="#111827">•  Attenuation about −41 dB flat 300 Hz–8 kHz (calculated). Not built or tested. Check with a multimeter, then start at very low volume.</text>
+<text x="48" y="670" font-size="12" text-anchor="start" fill="#111827">•  Phone mic wiring: Sleeve = MIC, Ring2 = GND, Ring1 = R, Tip = L (CTIA). If the far end hears nothing, try an OMTP/CTIA swap adapter.</text>
+<text x="48" y="694" font-size="12" text-anchor="start" fill="#111827">•  The USB microphone plugs into a second Pi USB port. rtvc: input_device = &lt;mic name&gt;, output_device = &lt;CM108 module name&gt;.</text>
+</svg>

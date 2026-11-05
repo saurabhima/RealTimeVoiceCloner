@@ -48,6 +48,8 @@ Only convert voices you have permission to use, and don't use this to deceive or
 
 *System overview and wiring detail (values: 2 × 10 kΩ, 47 Ω, 2.2 kΩ, 4.7 µF; see `hardware/`). Not yet built or tested on real hardware, so verify with a multimeter and a low volume first.*
 
+Prefer one board? See the **[Voice HAT design](hardware/hat/README.md)** (CM108/CM119 module + attenuator + TRRS on a Pi-sized PCB; design only, untested).
+
 ## Using a USB audio adapter (recommended; required on Pi 5)
 1. Plug in the USB mic and the USB audio adapter, then run `rtvc devices`. Both appear as USB devices; note each name.
 2. Put a unique part of each name in `configs/default.toml`, e.g. `input_device = "Blue"` and `output_device = "USB Audio"`. Don't pick the same device for both unless it really is the mic.
