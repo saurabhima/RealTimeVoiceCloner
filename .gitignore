@@ -1,0 +1,9 @@
+__pycache__/
+*.egg-info/
+.venv/
+build/
+dist/
+*.onnx
+*.wav
+!tests/**/*.wav
+.pytest_cache/

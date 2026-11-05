@@ -1,0 +1,30 @@
+# RealTimeVoiceCloner configuration. CLI flags override these values.
+consent_acknowledged = false   # must be true (or pass --accept-responsible-use)
+
+[audio]
+input_device  = "USB"          # name substring or index; "" = system default
+output_device = "Headphones"   # Pi 3.5mm jack; use your USB dongle's name otherwise
+device_rate   = 48000
+block_ms      = 20
+output_channels = 2            # same signal on L and R
+input_gain_db  = 0.0
+output_gain_db = -12.0         # start low, then raise (see README, "Levels")
+
+[gate]
+open_db  = -45.0
+close_db = -50.0
+hold_ms  = 200
+
+[backend]
+name = "pitch"                 # passthrough | pitch | onnx
+
+[backend.pitch]
+semitones = 4.0                # +up / -down
+
+[backend.onnx]
+model = "models/vc.onnx"
+sample_rate = 16000
+chunk_ms = 200
+context_ms = 400
+crossfade_ms = 20
+speaker_embedding = ""         # optional .npy file

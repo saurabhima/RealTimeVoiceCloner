@@ -1,0 +1,72 @@
+# RealTimeVoiceCloner
+
+Real-time voice conversion for **Raspberry Pi**. Speech arrives from a **USB microphone**, is converted to a different speaking style/voice, and leaves through the **3.5 mm audio jack** into a phone for use in an active call. The same code runs on **Windows, Linux and macOS** for development.
+
+```
+USB mic ─► capture ─► noise gate ─► resample ─► [ backend ] ─► resample ─► limiter ─► jack ─► phone
+ (48 kHz)   (PortAudio)              (soxr)     passthrough      (soxr)               (TRRS)
+                                                 pitch (DSP)
+                                                 onnx  (neural VC)
+```
+
+## Status
+* Working, tested: audio engine, gate, resampling, limiter, streaming phase-vocoder pitch/voice changer, chunked streaming wrapper for neural models, CLI, offline `convert`, CI on 3 OSes + Pi-class ARM.
+* **Neural voice cloning is a plug-in**: the `onnx` backend runs your own exported model (contract in [docs/MODELS.md](docs/MODELS.md)). No model is bundled. The default `pitch` backend is a plain DSP voice changer, not a clone.
+* Not yet validated on real Pi hardware / a real phone call; levels and latency need tuning on your setup.
+
+## Responsible use
+Only convert voices you have permission to use, and don't use this to deceive or defraud people on calls (impersonation can be illegal, and many jurisdictions and call-recording rules require disclosure). `rtvc run` refuses to start until you pass `--accept-responsible-use` or set `consent_acknowledged = true`.
+
+## Hardware (Raspberry Pi → phone)
+* **Pi 3B/3B+/4/400** have a 3.5 mm jack. **Pi 5 and Zero have none** — use a USB audio adapter with line-out instead (set `output_device` to its name).
+* The jack is an *output only*. The phone's headset port expects a **TRRS** headset: earpiece on L/R, **microphone on the sleeve (CTIA)**. So the Pi's output must be wired to the phone's **mic** contact:
+  1. Use a **TRRS breakout/adapter** (or a "headset-to-phone" cable). Connect Pi L+R (summed) → attenuator → DC-blocking capacitor (1–10 µF) → **mic** contact; grounds common.
+  2. **Attenuate ~40 dB (≈100:1, e.g. 10 kΩ + 100 Ω divider).** Line level is ~1 Vpp; a phone mic input expects a few mV. Without this the call audio will be loud and distorted.
+  3. The phone biases the mic line with ~2 V DC — the series capacitor protects the Pi. Never connect the Pi's 5 V/3.3 V to the phone.
+* Phones without a jack: use the phone's USB-C/Lightning-to-3.5 mm adapter, which presents the same TRRS.
+* Commercial "audio isolator / mic attenuator" cables are the easier route.
+* Prefer a USB sound card for cleaner audio and fewer ground-loop hum problems; add a ground-loop isolator if you hear whine.
+
+## Install
+### Raspberry Pi OS (64-bit Bookworm)
+```bash
+git clone https://github.com/saurabhima/RealTimeVoiceCloner && cd RealTimeVoiceCloner
+./scripts/install_pi.sh
+```
+### Linux / macOS / Windows (development)
+```bash
+python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
+pip install -e ".[dev]"        # add ,onnx for neural models
+```
+Linux needs `libportaudio2`; macOS/Windows wheels bundle PortAudio.
+
+## Use
+```bash
+rtvc devices                                      # find your mic and output
+rtvc convert in.wav out.wav --semitones 4         # offline test, no hardware
+rtvc tone --output-gain-db -30                    # calibrate level into the phone
+rtvc run -c configs/default.toml --accept-responsible-use
+rtvc run --backend onnx -c my.toml                # neural model
+```
+Autostart on the Pi: `sudo systemctl enable --now rtvc`.
+
+### Levels
+Start with `output_gain_db = -12` plus the hardware attenuator, play `rtvc tone` while on a test call with a friend (or voicemail), and adjust until the far end hears a clean, undistorted tone. `rtvc run` prints processing time vs. the block budget, buffer under/overruns, and total latency.
+
+### Latency
+`block (20 ms) ×2 + backend`. Pitch backend ≈ 70 ms; neural chunk size dominates (≈ chunk + crossfade). Under ~250 ms total is comfortable for conversation.
+
+## Layout
+```
+src/rtvc/dsp.py          gate, limiter, phase-vocoder pitch shifter
+src/rtvc/pipeline.py     hardware-independent chain (unit-testable)
+src/rtvc/audio_io.py     sounddevice engine, ring buffer, device lookup
+src/rtvc/backends/       passthrough, pitch, chunked wrapper, onnx loader
+configs/default.toml     all settings
+scripts/                 Pi installer + systemd unit
+```
+
+## Roadmap
+Formant-preserving shifting · built-in lightweight neural model (kNN-VC) · Bluetooth HFP/USB-gadget output for jack-less phones · web UI for live tuning.
+
+MIT licensed.

@@ -1,0 +1,16 @@
+[Unit]
+Description=RealTimeVoiceCloner
+After=sound.target
+
+[Service]
+User=@USER@
+SupplementaryGroups=audio
+WorkingDirectory=@REPO@
+ExecStart=@REPO@/.venv/bin/rtvc run -c @REPO@/configs/default.toml
+Restart=on-failure
+Nice=-10
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=20
+
+[Install]
+WantedBy=multi-user.target
