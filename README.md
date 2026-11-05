@@ -28,7 +28,7 @@ rtvc run -c configs/default.toml --backend remote --accept-responsible-use
 * Fail-closed: if the server is slow or unreachable, the call hears **silence**, never your real voice.
 * The link is **unauthenticated and unencrypted**: use a trusted LAN or an SSH/WireGuard tunnel, and keep `--host 127.0.0.1` unless needed.
 * Latency ≈ chunk (200 ms) + crossfade + network + inference. Inference must stay under `chunk_ms`; the Pi log shows it.
-* **Status:** the transport, fail-closed behaviour and streaming wrapper are tested. The kNN-VC runner itself is **unverified end to end** (not run yet), and conversion quality/latency are unmeasured.
+* **Status:** transport, fail-closed behaviour, streaming wrapper and the kNN-VC `enroll` -> `serve` -> `convert` chain were run end to end (CPU only, synthetic test audio). Measured: a 0.6 s window (400 ms context + 200 ms chunk) took ~0.24 s on a CPU-only cloud container, i.e. slightly **slower than the 200 ms chunk**, so use a GPU or a fast desktop CPU, or raise `chunk_ms`. Voice quality on real speech is **not evaluated**. Output level is not normalised (the per-chunk loudness normaliser is off to avoid level pumping), so adjust `output_gain_db`.
 
 ## Responsible use
 Only convert voices you have permission to use, and don't use this to deceive or defraud people on calls (impersonation can be illegal, and many jurisdictions and call-recording rules require disclosure). `rtvc run` refuses to start until you pass `--accept-responsible-use` or set `consent_acknowledged = true`.
