@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 940" width="1200" height="940" font-family="Helvetica, Arial, sans-serif">
+<rect width="1200" height="940" fill="#ffffff"/>
+<text x="600" y="32" font-size="22" text-anchor="middle" fill="#111827" font-weight="700">RealTimeVoiceCloner: hardware setup (Raspberry Pi to phone call)</text>
+<text x="30" y="66" font-size="16" text-anchor="start" fill="#111827" font-weight="700">1. System overview</text>
+<rect x="30" y="90" width="200" height="70" rx="8" fill="#e0f2fe" stroke="#1f2937" stroke-width="2"/>
+<text x="130" y="122" font-size="15" text-anchor="middle" fill="#111827" font-weight="700">USB microphone</text>
+<text x="130" y="144" font-size="12" text-anchor="middle" fill="#374151">(your voice in)</text>
+<rect x="265" y="90" width="200" height="70" rx="8" fill="#dcfce7" stroke="#1f2937" stroke-width="2"/>
+<text x="365" y="122" font-size="15" text-anchor="middle" fill="#111827" font-weight="700">Raspberry Pi</text>
+<text x="365" y="144" font-size="12" text-anchor="middle" fill="#374151">runs  rtvc run</text>
+<rect x="500" y="90" width="200" height="70" rx="8" fill="#fef9c3" stroke="#1f2937" stroke-width="2"/>
+<text x="600" y="122" font-size="15" text-anchor="middle" fill="#111827" font-weight="700">USB audio adapter</text>
+<text x="600" y="144" font-size="12" text-anchor="middle" fill="#374151">headphone-out jack</text>
+<rect x="735" y="90" width="200" height="70" rx="8" fill="#fee2e2" stroke="#1f2937" stroke-width="2"/>
+<text x="835" y="122" font-size="15" text-anchor="middle" fill="#111827" font-weight="700">Attenuator + cap</text>
+<text x="835" y="144" font-size="12" text-anchor="middle" fill="#374151">(circuit below)</text>
+<rect x="970" y="90" width="200" height="70" rx="8" fill="#ede9fe" stroke="#1f2937" stroke-width="2"/>
+<text x="1070" y="122" font-size="15" text-anchor="middle" fill="#111827" font-weight="700">Phone</text>
+<text x="1070" y="144" font-size="12" text-anchor="middle" fill="#374151">active call</text>
+<polyline points="230,125 265,125" fill="none" stroke="#1f2937" stroke-width="3"/>
+<polygon points="265,125 255,119 255,131" fill="#1f2937"/>
+<text x="247" y="115" font-size="12" text-anchor="middle" fill="#111827">USB</text>
+<polyline points="465,125 500,125" fill="none" stroke="#1f2937" stroke-width="3"/>
+<polygon points="500,125 490,119 490,131" fill="#1f2937"/>
+<text x="482" y="115" font-size="12" text-anchor="middle" fill="#111827">USB</text>
+<polyline points="700,125 735,125" fill="none" stroke="#1f2937" stroke-width="3"/>
+<polygon points="735,125 725,119 725,131" fill="#1f2937"/>
+<text x="717" y="115" font-size="12" text-anchor="middle" fill="#111827">3.5mm</text>
+<polyline points="935,125 970,125" fill="none" stroke="#1f2937" stroke-width="3"/>
+<polygon points="970,125 960,119 960,131" fill="#1f2937"/>
+<text x="952" y="115" font-size="12" text-anchor="middle" fill="#111827">TRRS</text>
+<rect x="265" y="200" width="200" height="60" rx="8" fill="#fff" stroke="#6b7280" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="365" y="226" font-size="13" text-anchor="middle" fill="#111827" font-weight="700">Helper PC / GPU (optional)</text>
+<text x="365" y="246" font-size="12" text-anchor="middle" fill="#374151">rtvc serve  (kNN-VC model)</text>
+<polyline points="365,160 365,200" fill="none" stroke="#6b7280" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="375" y="185" font-size="11" text-anchor="start" fill="#6b7280">LAN / Tailscale  TCP 9000</text>
+<text x="600" y="222" font-size="12" text-anchor="start" fill="#374151">Pi 5 / Zero have no 3.5 mm jack, so the USB adapter is the audio output.</text>
+<text x="600" y="242" font-size="12" text-anchor="start" fill="#374151">Pi power: official 5 V supply (USB-C). Never connect Pi 5 V / 3.3 V to the phone.</text>
+<text x="30" y="310" font-size="16" text-anchor="start" fill="#111827" font-weight="700">2. Wiring detail: USB adapter headphone-out to phone microphone input</text>
+<rect x="40" y="340" width="170" height="240" rx="8" fill="#fef9c3" stroke="#1f2937" stroke-width="2"/>
+<text x="125" y="362" font-size="13" text-anchor="middle" fill="#111827" font-weight="700">USB audio adapter</text>
+<text x="125" y="378" font-size="11" text-anchor="middle" fill="#111827">HEADPHONE OUT (3.5 mm)</text>
+<circle cx="210" cy="400" r="5" fill="#1f2937"/>
+<text x="200" y="404" font-size="12" text-anchor="end" fill="#111827">Tip = L</text>
+<circle cx="210" cy="460" r="5" fill="#1f2937"/>
+<text x="200" y="464" font-size="12" text-anchor="end" fill="#111827">Ring = R</text>
+<circle cx="210" cy="540" r="5" fill="#1f2937"/>
+<text x="200" y="544" font-size="12" text-anchor="end" fill="#111827">Sleeve = GND</text>
+<polyline points="210,400 260,400" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="260" y="392" width="60" height="16" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="290" y="386" font-size="13" text-anchor="middle" fill="#111827">10 kΩ</text>
+<polyline points="320,400 420,400 420,430" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="210,460 260,460" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="260" y="452" width="60" height="16" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="290" y="446" font-size="13" text-anchor="middle" fill="#111827">10 kΩ</text>
+<polyline points="320,460 420,460 420,430" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="420" cy="430" r="5" fill="#1f2937"/>
+<polyline points="420,430 520,430" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="470" cy="430" r="5" fill="#1f2937"/>
+<polyline points="470,430 470,480" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="462" y="480" width="16" height="40" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="486" y="505" font-size="13" text-anchor="start" fill="#111827">47 Ω</text>
+<polyline points="470,520 470,560" fill="none" stroke="#1f2937" stroke-width="2"/>
+<text x="486" y="512" font-size="1" text-anchor="start" fill="#111827"></text>
+<line x1="520" y1="408" x2="520" y2="452" stroke="#1f2937" stroke-width="3"/><line x1="536" y1="408" x2="536" y2="452" stroke="#1f2937" stroke-width="3"/>
+<text x="528" y="396" font-size="13" text-anchor="middle" fill="#111827">C1  1–10 µF</text>
+<text x="528" y="470" font-size="11" text-anchor="middle" fill="#6b7280">(+ toward phone)</text>
+<text x="512" y="422" font-size="1" text-anchor="start" fill="#111827"></text>
+<polyline points="536,430 680,430" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="680" cy="430" r="5" fill="#1f2937"/>
+<polyline points="680,430 680,480" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="672" y="480" width="16" height="40" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="696" y="505" font-size="13" text-anchor="start" fill="#111827">2.2 kΩ</text>
+<polyline points="680,520 680,560" fill="none" stroke="#1f2937" stroke-width="2"/>
+<text x="600" y="418" font-size="12" text-anchor="middle" fill="#6b7280">MIC node</text>
+<polyline points="210,540 240,540 240,560 780,560" fill="none" stroke="#374151" stroke-width="3"/>
+<circle cx="470" cy="560" r="5" fill="#1f2937"/>
+<circle cx="680" cy="560" r="5" fill="#1f2937"/>
+<text x="300" y="578" font-size="12" text-anchor="start" fill="#374151">GND rail (common)</text>
+<rect x="800" y="340" width="170" height="300" rx="8" fill="#ede9fe" stroke="#1f2937" stroke-width="2"/>
+<text x="885" y="362" font-size="13" text-anchor="middle" fill="#111827" font-weight="700">TRRS plug  (CTIA)</text>
+<text x="885" y="378" font-size="11" text-anchor="middle" fill="#111827">into the phone's 3.5 mm port</text>
+<polyline points="680,430 800,430" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="800" cy="430" r="5" fill="#1f2937"/>
+<text x="810" y="426" font-size="12" text-anchor="start" fill="#111827">Sleeve = MIC</text>
+<polyline points="780,500 800,500" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="780,500 780,560" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="800" cy="500" r="5" fill="#1f2937"/>
+<text x="810" y="504" font-size="12" text-anchor="start" fill="#111827">Ring2 = GND</text>
+<circle cx="970" cy="540" r="5" fill="#1f2937"/>
+<text x="960" y="544" font-size="12" text-anchor="end" fill="#111827">Ring1 = R</text>
+<circle cx="970" cy="590" r="5" fill="#1f2937"/>
+<text x="960" y="594" font-size="12" text-anchor="end" fill="#111827">Tip = L</text>
+<rect x="1030" y="500" width="150" height="140" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="1105" y="524" font-size="12" text-anchor="middle" fill="#111827" font-weight="700">Optional monitor</text>
+<text x="1105" y="540" font-size="11" text-anchor="middle" fill="#111827">(hear the caller)</text>
+<text x="1105" y="556" font-size="11" text-anchor="middle" fill="#111827">3.5 mm headphone socket</text>
+<polyline points="970,540 1030,540" fill="none" stroke="#6b7280" stroke-width="2"/>
+<polyline points="970,590 1030,590" fill="none" stroke="#6b7280" stroke-width="2"/>
+<polyline points="780,560 780,670 1090,670 1090,640" fill="none" stroke="#6b7280" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="1105" y="610" font-size="11" text-anchor="middle" fill="#6b7280">L / R / GND</text>
+<text x="40" y="610" font-size="12" text-anchor="start" fill="#111827">Signal path:  L + R  mixed by the two 10 kΩ,  shunt 47 Ω  →  ~1/107 (−40 dB)</text>
+<text x="40" y="630" font-size="12" text-anchor="start" fill="#111827">then C1 blocks the phone's DC bias;  2.2 kΩ to GND makes the phone detect a headset mic.</text>
+<rect x="30" y="700" width="1140" height="215" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="2"/>
+<text x="50" y="726" font-size="15" text-anchor="start" fill="#111827" font-weight="700">Parts list and notes</text>
+<text x="50" y="752" font-size="12" text-anchor="start" fill="#111827">•  Resistors 1/4 W, 5 % are fine: 2 × 10 kΩ, 1 × 47 Ω, 1 × 2.2 kΩ.   C1: 1–10 µF (film/ceramic, or electrolytic with + on the phone side).</text>
+<text x="50" y="773" font-size="12" text-anchor="start" fill="#111827">•  Why attenuate: the adapter outputs up to ~1 V; a phone mic input expects a few mV. Without the divider the far end hears loud, distorted audio.</text>
+<text x="50" y="794" font-size="12" text-anchor="start" fill="#111827">•  Why the 2.2 kΩ: phones detect a headset by a DC load on the mic pin. Without it the phone may ignore the jack or keep using its own microphone.</text>
+<text x="50" y="815" font-size="12" text-anchor="start" fill="#111827">•  Pinout CTIA (most modern phones): Tip = L, Ring1 = R, Ring2 = GND, Sleeve = MIC.  If the far end hears nothing, try an OMTP/CTIA swap adapter.</text>
+<text x="50" y="836" font-size="12" text-anchor="start" fill="#111827">•  Once a plug is detected the phone sends call audio to Tip/Ring1, so use the optional monitor socket (or a headset splitter) if you want to hear the caller.</text>
+<text x="50" y="857" font-size="12" text-anchor="start" fill="#111827">•  Calibrate: rtvc tone --output-gain-db -30 on a test call, then raise gradually. Keep the adapter's volume fixed in alsamixer; adjust with output_gain_db.</text>
+<text x="50" y="878" font-size="12" text-anchor="start" fill="#111827">•  Hum / whine: ground loop. Run the phone on battery (not charging from the same supply) or add a 3.5 mm ground-loop isolator.</text>
+<text x="50" y="899" font-size="12" text-anchor="start" fill="#111827">•  Safety: build on a small perfboard or a TRRS breakout, keep leads short, and test with a multimeter that nothing is connected to 5 V or 3.3 V.</text>
+</svg>
