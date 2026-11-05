@@ -1,0 +1,34 @@
+ref,x_mm,y_mm,rotation_deg,value,footprint
+C1,41.8,12.4,0,4.7uF,Capacitor_SMD:C_0805_2012Metric
+C2,21.6,5.6,0,10uF,Capacitor_SMD:C_0805_2012Metric
+C3,24.3,9.3,90,100nF,Capacitor_SMD:C_0603_1608Metric
+C4,14.8,13,0,100pF,Capacitor_SMD:C_0603_1608Metric
+C5,14.8,19,0,100pF,Capacitor_SMD:C_0603_1608Metric
+C6,30.3,3.4,0,10uF,Capacitor_SMD:C_0805_2012Metric
+C7,30.3,6.2,0,10uF,Capacitor_SMD:C_0805_2012Metric
+C8,27.9,9.4,0,100nF,Capacitor_SMD:C_0603_1608Metric
+C9,25.6,5.6,0,10uF,Capacitor_SMD:C_0805_2012Metric
+C10,22.7,9.3,90,100nF,Capacitor_SMD:C_0603_1608Metric
+C11,25.8,22.8,0,1uF,Capacitor_SMD:C_0603_1608Metric
+C12,29,22.8,0,100nF,Capacitor_SMD:C_0603_1608Metric
+C13,20,11.7,0,10uF,Capacitor_SMD:C_0805_2012Metric
+C14,31.5,9.4,0,10uF,Capacitor_SMD:C_0805_2012Metric
+C15,19.4,13.5,0,100nF,Capacitor_SMD:C_0603_1608Metric
+C16,35.6,1.3,0,100pF,Capacitor_SMD:C_0603_1608Metric
+C17,35.6,8.6,0,100pF,Capacitor_SMD:C_0603_1608Metric
+J1,4.15,16,270,USB_C_RECEPTACLE,Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12
+J2,39.7,21.5,180,PJ320D_TRRS_CTIA,Connector_Audio:Jack_3.5mm_PJ320D_Horizontal
+L1,12.6,8,0,Ferrite bead,Inductor_SMD:L_0805_2012Metric
+L2,17.2,8,0,Ferrite bead,Inductor_SMD:L_0805_2012Metric
+R1,37.5,3.4,0,10k,Resistor_SMD:R_0603_1608Metric
+R2,37.5,6.2,0,10k,Resistor_SMD:R_0603_1608Metric
+R3,41.8,9.4,0,47R,Resistor_SMD:R_0603_1608Metric
+R4,45.2,12.4,0,2.2k,Resistor_SMD:R_0603_1608Metric
+R6,10.9,11.2,0,5.1k,Resistor_SMD:R_0603_1608Metric
+R7,10.9,20.8,0,5.1k,Resistor_SMD:R_0603_1608Metric
+R8,19,15,0,39R,Resistor_SMD:R_0603_1608Metric
+R9,19,17,0,39R,Resistor_SMD:R_0603_1608Metric
+R10,33.8,3.4,0,39R,Resistor_SMD:R_0603_1608Metric
+R11,33.8,6.2,0,39R,Resistor_SMD:R_0603_1608Metric
+U1,27,16,90,CM108B,Package_QFP:LQFP-48_7x7mm_P0.5mm
+U2,14,16,0,USBLC6-2SC6,Package_TO_SOT_SMD:SOT-23-6

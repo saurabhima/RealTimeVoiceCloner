@@ -4,6 +4,8 @@ A small USB audio module: **USB Type-C in**, **CM108B codec**, level attenuator,
 
 ![USB-C module schematic](../../docs/usbc_schematic.png)
 
+**PCB:** a placement-only KiCad board is in [`pcb/`](pcb/README.md) (unrouted, not yet opened in KiCad).
+
 | File | Use |
 |---|---|
 | `rtvc_usbc.net` | KiCad netlist |
@@ -20,7 +22,7 @@ Sources: the **CM108B datasheet rev 1.11** (pin numbers, straps, electrical data
   1. **`VREF` (pin 26) capacitor:** I used 10 µF, read from an application-note figure whose pin labels for pins 25-28 are shifted by one against the datasheet table. I followed the datasheet's pin numbers; confirm the VREF value in C-Media's reference design files.
   2. **C6/C7:** the reference uses 100 µF (for 32 Ω headphones). 10 µF is enough into the 10 kΩ divider (1.6 Hz corner) but is my choice, not C-Media's.
   3. **Ferrite bead value:** the notes do not give one. Use a common 600 Ω @ 100 MHz, >= 500 mA part.
-  4. **Connector and jack pad names:** the Type-C names (`A1B12`, `A4B9`, ...) follow KiCad's HRO TYPE-C-31-M-12 footprint, and the jack names (`TIP`, `RING1`, `RING2`, `SLEEVE`) are generic. Map them to the parts you choose.
+  4. **Connector and jack pad names:** now checked against the official KiCad footprints (HRO TYPE-C-31-M-12 and PJ320D). The remaining unknown is whether the PJ320D's contacts S/T/R1/R2 map to sleeve/tip/ring1/ring2 as I assumed: confirm in the jack's datasheet.
 * **Left unconnected on purpose:** `MICIN`, `VBIAS`, volume/mute pins (internal pull-ups), EEPROM pins (default USB descriptors; the 93C46 is optional), I2S, GPIO, SPDIF, LED pins, `LOBS`, N.C. pins 11 and 28, connector SBU pins. The LED pins and CM-driver GPIO pull-ups in the notes are not needed for this use (Linux uses the class-compliant driver).
 * **Untested:** not opened in KiCad, not fabricated. The attenuator gain (about -41 dB) is a calculation. The CM108B is a 0.5 mm-pitch LQFP-48: plan for hot-air or a fab assembly service. The CM119B is a related part but I did not review its datasheet.
 
