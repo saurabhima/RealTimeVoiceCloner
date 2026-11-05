@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Helvetica, Arial, sans-serif"><rect width="1200" height="800" fill="#fff"/>
+<text x="600" y="30" font-size="20" text-anchor="middle" fill="#111827" font-weight="700">RTVC USB-C Voice Module v0.1: USB-C in, CM108B codec, attenuator, 3.5 mm TRRS out</text>
+<rect x="20" y="48" width="1160" height="430" rx="8" fill="#fafafa" stroke="#9ca3af" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="35" y="68" font-size="11" text-anchor="start" fill="#6b7280">Module PCB (about 30 x 20 mm)</text>
+<rect x="40" y="100" width="190" height="270" rx="8" fill="#e0f2fe" stroke="#1f2937" stroke-width="2"/>
+<text x="135" y="122" font-size="13" text-anchor="middle" fill="#111827" font-weight="700">J1  USB-C receptacle</text>
+<text x="135" y="138" font-size="11" text-anchor="middle" fill="#111827">(USB 2.0 only)</text>
+<circle cx="230" cy="160" r="4.5" fill="#1f2937"/>
+<text x="220" y="164" font-size="11" text-anchor="end" fill="#111827">CC1</text>
+<circle cx="230" cy="195" r="4.5" fill="#1f2937"/>
+<text x="220" y="199" font-size="11" text-anchor="end" fill="#111827">CC2</text>
+<circle cx="230" cy="245" r="4.5" fill="#1f2937"/>
+<text x="220" y="249" font-size="11" text-anchor="end" fill="#111827">VBUS (A4/B9)</text>
+<circle cx="230" cy="295" r="4.5" fill="#1f2937"/>
+<text x="220" y="299" font-size="11" text-anchor="end" fill="#111827">D+ (A6/B6)</text>
+<circle cx="230" cy="325" r="4.5" fill="#1f2937"/>
+<text x="220" y="329" font-size="11" text-anchor="end" fill="#111827">D− (A7/B7)</text>
+<circle cx="230" cy="355" r="4.5" fill="#1f2937"/>
+<text x="220" y="359" font-size="11" text-anchor="end" fill="#111827">GND (A1/B12), shield</text>
+<polyline points="230,160 262,160" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="262" y="152" width="56" height="16" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="290" y="147" font-size="11" text-anchor="middle" fill="#111827">R6 5.1k</text>
+<polyline points="318,160 345,160" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="345,160 345,168" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="335,168 355,168" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="339,173 351,173" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="343,178 347,178" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="230,195 262,195" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="262" y="187" width="56" height="16" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="290" y="182" font-size="11" text-anchor="middle" fill="#111827">R7 5.1k</text>
+<polyline points="318,195 345,195" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="345,195 345,203" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="335,203 355,203" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="339,208 351,208" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="343,213 347,213" fill="none" stroke="#1f2937" stroke-width="2"/>
+<text x="135" y="388" font-size="10" text-anchor="middle" fill="#6b7280">SBU1/SBU2: no connect</text>
+<polyline points="230,245 280,245" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="250" cy="245" r="4.5" fill="#1f2937"/>
+<rect x="280" y="237" width="56" height="16" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="308" y="232" font-size="11" text-anchor="middle" fill="#111827">FB1</text>
+<polyline points="336,245 400,245" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="380" cy="245" r="4.5" fill="#1f2937"/>
+<polyline points="380,245 380,215" fill="none" stroke="#1f2937" stroke-width="2"/>
+<line x1="368" y1="215" x2="392" y2="215" stroke="#1f2937" stroke-width="3"/><line x1="368" y1="207" x2="392" y2="207" stroke="#1f2937" stroke-width="3"/>
+<polyline points="380,207 380,190" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="380,190 380,198" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="370,198 390,198" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="374,203 386,203" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="378,208 382,208" fill="none" stroke="#1f2937" stroke-width="2"/>
+<text x="372" y="228" font-size="11" text-anchor="end" fill="#111827">C2/C3</text>
+<polyline points="400,245 420,245" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="270" y="278" width="70" height="64" rx="8" fill="#f3f4f6" stroke="#1f2937" stroke-width="2"/>
+<text x="305" y="296" font-size="11" text-anchor="middle" fill="#111827" font-weight="700">U2</text>
+<text x="305" y="310" font-size="10" text-anchor="middle" fill="#111827">USBLC6</text>
+<text x="305" y="322" font-size="10" text-anchor="middle" fill="#111827">ESD</text>
+<polyline points="230,295 270,295" fill="none" stroke="#2563eb" stroke-width="2"/>
+<polyline points="340,295 420,295" fill="none" stroke="#2563eb" stroke-width="2"/>
+<polyline points="230,325 270,325" fill="none" stroke="#2563eb" stroke-width="2"/>
+<polyline points="340,325 420,325" fill="none" stroke="#2563eb" stroke-width="2"/>
+<polyline points="230,355 250,355 250,440" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="420" y="100" width="250" height="270" rx="8" fill="#fef9c3" stroke="#1f2937" stroke-width="2"/>
+<text x="545" y="122" font-size="13" text-anchor="middle" fill="#111827" font-weight="700">U1  CM108B (LQFP-48)</text>
+<text x="545" y="140" font-size="10" text-anchor="middle" fill="#b45309">pin names are placeholders:</text>
+<text x="545" y="153" font-size="10" text-anchor="middle" fill="#b45309">map to the datasheet pin numbers</text>
+<circle cx="420" cy="245" r="4.5" fill="#1f2937"/>
+<text x="430" y="249" font-size="11" text-anchor="start" fill="#111827">DVDD / AVDD</text>
+<circle cx="420" cy="295" r="4.5" fill="#1f2937"/>
+<text x="430" y="299" font-size="11" text-anchor="start" fill="#111827">DP</text>
+<circle cx="420" cy="325" r="4.5" fill="#1f2937"/>
+<text x="430" y="329" font-size="11" text-anchor="start" fill="#111827">DM</text>
+<circle cx="420" cy="355" r="4.5" fill="#1f2937"/>
+<text x="430" y="359" font-size="11" text-anchor="start" fill="#111827">DGND / AGND</text>
+<circle cx="670" cy="250" r="4.5" fill="#1f2937"/>
+<text x="660" y="254" font-size="11" text-anchor="end" fill="#111827">HPOUTL</text>
+<circle cx="670" cy="300" r="4.5" fill="#1f2937"/>
+<text x="660" y="304" font-size="11" text-anchor="end" fill="#111827">HPOUTR</text>
+<text x="545" y="190" font-size="11" text-anchor="middle" fill="#111827" font-weight="700">TODO from datasheet:</text>
+<text x="545" y="206" font-size="10" text-anchor="middle" fill="#111827">regulator caps, mode / EEPROM</text>
+<text x="545" y="220" font-size="10" text-anchor="middle" fill="#111827">pins, MIC input handling</text>
+<polyline points="420,355 400,355 400,440" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="670,250 700,250" fill="none" stroke="#1f2937" stroke-width="2"/>
+<line x1="700" y1="230" x2="700" y2="270" stroke="#1f2937" stroke-width="3"/><line x1="714" y1="230" x2="714" y2="270" stroke="#1f2937" stroke-width="3"/>
+<text x="707" y="222" font-size="11" text-anchor="middle" fill="#111827">C6 10µF</text>
+<polyline points="670,300 700,300" fill="none" stroke="#1f2937" stroke-width="2"/>
+<line x1="700" y1="280" x2="700" y2="320" stroke="#1f2937" stroke-width="3"/><line x1="714" y1="280" x2="714" y2="320" stroke="#1f2937" stroke-width="3"/>
+<text x="707" y="272" font-size="11" text-anchor="middle" fill="#111827">C7 10µF</text>
+<polyline points="714,250 740,250" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="740" y="242" width="56" height="16" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="768" y="237" font-size="11" text-anchor="middle" fill="#111827">R1 10k</text>
+<polyline points="796,250 850,250 850,275" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="714,300 740,300" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="740" y="292" width="56" height="16" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="768" y="287" font-size="11" text-anchor="middle" fill="#111827">R2 10k</text>
+<polyline points="796,300 850,300 850,275" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="850" cy="275" r="4.5" fill="#1f2937"/>
+<text x="715" y="336" font-size="10" text-anchor="middle" fill="#6b7280">(+ toward U1)</text>
+<polyline points="850,275 940,275" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="880" cy="275" r="4.5" fill="#1f2937"/>
+<polyline points="880,275 880,340" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="872" y="340" width="16" height="36" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="894" y="362" font-size="11" text-anchor="start" fill="#111827">R3 47Ω</text>
+<polyline points="880,376 880,440" fill="none" stroke="#1f2937" stroke-width="2"/>
+<line x1="940" y1="255" x2="940" y2="295" stroke="#1f2937" stroke-width="3"/><line x1="954" y1="255" x2="954" y2="295" stroke="#1f2937" stroke-width="3"/>
+<text x="947" y="247" font-size="11" text-anchor="middle" fill="#111827">C1 4.7µF</text>
+<text x="947" y="313" font-size="10" text-anchor="middle" fill="#6b7280">(+ to phone)</text>
+<polyline points="954,275 1040,275" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="1000" cy="275" r="4.5" fill="#1f2937"/>
+<polyline points="1000,275 1000,340" fill="none" stroke="#1f2937" stroke-width="2"/>
+<rect x="992" y="340" width="16" height="36" fill="#fff" stroke="#1f2937" stroke-width="2"/>
+<text x="986" y="362" font-size="11" text-anchor="end" fill="#111827">R4 2.2k</text>
+<polyline points="1000,376 1000,440" fill="none" stroke="#1f2937" stroke-width="2"/>
+<polyline points="250,440 1030,440" fill="none" stroke="#374151" stroke-width="3"/>
+<circle cx="400" cy="440" r="4.5" fill="#1f2937"/>
+<circle cx="880" cy="440" r="4.5" fill="#1f2937"/>
+<circle cx="1000" cy="440" r="4.5" fill="#1f2937"/>
+<text x="560" y="458" font-size="11" text-anchor="start" fill="#374151">GND (join audio ground at the attenuator)</text>
+<rect x="1040" y="230" width="130" height="200" rx="8" fill="#ede9fe" stroke="#1f2937" stroke-width="2"/>
+<text x="1105" y="250" font-size="12" text-anchor="middle" fill="#111827" font-weight="700">J2  3.5 mm TRRS</text>
+<text x="1105" y="265" font-size="10" text-anchor="middle" fill="#111827">to phone (CTIA)</text>
+<circle cx="1040" cy="275" r="4.5" fill="#1f2937"/>
+<text x="1050" y="279" font-size="11" text-anchor="start" fill="#111827">Sleeve = MIC</text>
+<circle cx="1040" cy="345" r="4.5" fill="#1f2937"/>
+<text x="1050" y="349" font-size="11" text-anchor="start" fill="#111827">Ring2 = GND</text>
+<polyline points="1040,345 1030,345 1030,440" fill="none" stroke="#1f2937" stroke-width="2"/>
+<circle cx="1030" cy="440" r="4.5" fill="#1f2937"/>
+<text x="1050" y="385" font-size="11" text-anchor="start" fill="#111827">Ring1 = R, Tip = L</text>
+<text x="1050" y="402" font-size="10" text-anchor="start" fill="#6b7280">(optional J3 monitor)</text>
+<rect x="20" y="495" width="1160" height="285" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="2"/>
+<text x="38" y="520" font-size="15" text-anchor="start" fill="#111827" font-weight="700">Design notes</text>
+<text x="38" y="548" font-size="12" text-anchor="start" fill="#111827">•  Connect to the Pi with a USB-C to USB-A cable into a Pi USB-A port. The Pi's own USB-C port is power-input only and cannot host this module.</text>
+<text x="38" y="575" font-size="12" text-anchor="start" fill="#111827">•  CC1/CC2 each get 5.1 kΩ to GND so the host sees a USB device; with a C-to-A cable, VBUS is 5 V and the module draws well under 500 mA. No USB-PD, no alternate modes.</text>
+<text x="38" y="602" font-size="12" text-anchor="start" fill="#111827">•  D+ and D− are tied across both connector rows (A6/B6, A7/B7), so the plug works in either orientation. Keep the pair short and parallel (about 90 Ω differential).</text>
+<text x="38" y="629" font-size="12" text-anchor="start" fill="#111827">•  U1 is NOT a finished design: pin numbers, regulator/decoupling caps, mode/EEPROM pins and the need for C6/C7 must come from the CM108B datasheet (not available to me).</text>
+<text x="38" y="656" font-size="12" text-anchor="start" fill="#111827">•  C2 = 10 µF and C3 = 100 nF at VBUS. U2 (USBLC6): VBUS pin to raw VBUS (left of FB1), GND pin to GND, I/O pins on D+/D−.</text>
+<text x="38" y="683" font-size="12" text-anchor="start" fill="#111827">•  Attenuation about −41 dB flat from 300 Hz (calculated). Not built or tested: check with a multimeter and start at very low volume.</text>
+<text x="38" y="710" font-size="12" text-anchor="start" fill="#111827">•  Phone side: plug a 4-pole male-male TRRS (CTIA) cable from J2 to the phone. If the far end hears nothing, try an OMTP/CTIA swap adapter.</text>
+<text x="38" y="737" font-size="12" text-anchor="start" fill="#111827">•  Software: rtvc run -c ... with output_device = the module (see rtvc devices). The USB microphone stays on a separate Pi USB port.</text>
+</svg>
